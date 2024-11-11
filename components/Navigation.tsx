@@ -3,7 +3,7 @@ import { useMedia } from "react-use";
 import { usePathname, useRouter } from "next/navigation";
 import { NavButton } from "./nav-button";
 import { Button } from "./ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "./ui/sheet";
 import { useState } from "react";
 import { Menu } from "lucide-react";
 
@@ -46,27 +46,30 @@ export const Navigation = () => {
     return (
       <Sheet open={isOpen} onOpenChange={setIsOpen}>
         <SheetTrigger>
-          <Button
-            variant="outline"
-            size="sm"
-            className="font-normal bg-white/10 hover:bg-white/20 hover:text-white border-none focus-visible:ring-offset-0 focus-visible:ring-transparent outline-none text-white focus:bg-white/30 transition"
+          <div
+            className="font-normal bg-white/10 hover:bg-white/20 hover:text-white border-none focus-visible:ring-offset-0 focus-visible:ring-transparent outline-none text-white focus:bg-white/30 transition p-2 rounded"
+            role="button"
+            tabIndex={0}
+            onClick={() => setIsOpen(true)}
           >
-            <Menu className = "size-4"/>
-          </Button>
+            <Menu className="size-4" />
+          </div>
         </SheetTrigger>
-        <SheetContent side = "left" className = "px-2">
-          <nav className = "flex flex-col gap-y-2 pt-6">
+        <SheetContent side="left" className="px-2">
+          <SheetHeader>
+            <SheetTitle>Navigation</SheetTitle>
+          </SheetHeader>
+          <nav className="flex flex-col gap-y-2 pt-6">
             {routes.map((route) => (
               <Button
-                key = {route.href}
-                variant = {route.href === pathname ? "secondary" : "ghost"}
-                onClick = {() => onClick(route.href)}
-                className = "w-full justify-start"
+                key={route.href}
+                variant={route.href === pathname ? "secondary" : "ghost"}
+                onClick={() => onClick(route.href)}
+                className="w-full justify-start"
               >
                 {route.label}
-                </Button>
-              )
-            )}
+              </Button>
+            ))}
           </nav>
         </SheetContent>
       </Sheet>
