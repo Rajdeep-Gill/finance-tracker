@@ -15,6 +15,13 @@
       "when": 1731278562281,
       "tag": "0001_closed_komodo",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1731448296104,
+      "tag": "0002_narrow_jackal",
+      "breakpoints": true
     }
   ]
 }
