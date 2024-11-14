@@ -55,7 +55,7 @@ const CategoriesPage = () => {
               deleteCategories.mutate({ ids });
             }}
             disabled={isDisabled}
-            filterKey="category"/>
+            filterKey="name"/>
         </CardContent>
       </Card>
     </div>
