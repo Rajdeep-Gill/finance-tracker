@@ -199,12 +199,11 @@ const app = new Hono()
         .with(transactionsToDelete)
         .delete(transactions)
         .where(
-          eq(transactions.id, sql`(select id from ${transactionsToDelete})`) // delete the transactions selected in the with clause
+          inArray(transactions.id, sql`(select id from ${transactionsToDelete})`) // delete the transactions selected in the with clause
         )
         .returning({
           id: transactions.id,
         });
-
       return c.json({ data });
     }
   )
