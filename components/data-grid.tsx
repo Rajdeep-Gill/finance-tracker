@@ -49,7 +49,7 @@ export const DataGrid = () => {
         title="Expenses"
         value={data?.expensesAmount}
         percentageChange={data?.expensesChange}
-        icon={FaPiggyBank}
+        icon={FaArrowTrendDown}
         variant="default"
         dateRange={dateRangeLabel}
       />
